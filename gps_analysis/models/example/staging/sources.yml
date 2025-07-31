@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: geolife_raw
+    schema: geolife_raw
+    tables:
+      - name: geolife__activities
+        description: "Raw activity data from the GeoLife GPS trajectory dataset"

@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fct_activities
+    description: "A fact table containing one row per completed user activity."
+    columns:
+      - name: activity_id
+        description: "The primary key for this table."
+        tests:
+          - unique
+          - not_null
+
+      - name: user_id
+        description: "The foreign key to the dim_users table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_users')
+              field: user_id
+
+      - name: total_distance_km
+        description: "The total distance of the activity in kilometers."
+        tests:
+          - dbt_utils.at_least_one
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1000
+
+  - name: dim_users
+    description: "A dimension table containing one row per user."
+    columns:
+      - name: user_id
+        description: "The primary key for this table."
+        tests:
+          - unique
+          - not_null

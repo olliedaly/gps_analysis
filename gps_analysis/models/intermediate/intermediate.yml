@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: int_activities_with_distance
+    description: "Takes individual GPS points and calculates the distance 
+      from the previous point in the same activity. This model is a building
+      block for calculating total activity distance."

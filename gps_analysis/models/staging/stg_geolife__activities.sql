@@ -11,7 +11,9 @@ renamed as (
         activity_id,
         latitude as latitude_deg,
         longitude as longitude_deg,
-        altitude_ft,
+        case 
+            when altitude_ft = -777 then null else altitude_ft / 0.3048 
+        end as altitude,
         timestamp as activity_timestamp
 
     from source

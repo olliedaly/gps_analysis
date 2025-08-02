@@ -17,6 +17,10 @@ renamed as (
         timestamp as activity_timestamp
 
     from source
+    -- Filter out rows with invalid latitude values (just 1)
+    where latitude between -90 and 90
+    -- no cases, but future proofing
+    and longitude between -180 and 180
 
 )
 

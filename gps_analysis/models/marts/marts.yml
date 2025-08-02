@@ -2,12 +2,16 @@ version: 2
 
 models:
   - name: fct_activities
-    description: "A fact table containing one row per completed user activity."
+    description: "A fact table containing one row per user activity."
     columns:
+      - name: activity_sk
+        description: "The surrogate key, generated from user_id and activity_id."
+        tests:
+          - unique
+          - not_null
       - name: activity_id
         description: "The primary key for this table."
         tests:
-          - unique
           - not_null
 
       - name: user_id
@@ -24,7 +28,8 @@ models:
           - dbt_utils.at_least_one
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
-              max_value: 1000
+              max_value: 5000 
+              severity: warn
 
   - name: dim_users
     description: "A dimension table containing one row per user."

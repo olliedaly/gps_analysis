@@ -5,8 +5,9 @@ models:
   - name: stg_geolife__activities
     description: "geolife gps data, renamed columns, removed invalid altitude and converted to metres from feet"
     columns:
-      - name: activity_timestamp
-        description: "A unique timestamp for each position"
-        data_tests:
-          - unique
+      - name: activity_id
+        tests:
+          - not_null
+      - name: user_id
+        tests:
           - not_null

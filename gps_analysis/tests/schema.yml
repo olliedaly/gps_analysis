@@ -1,0 +1,4 @@
+version: 2
+data_tests:
+  - name: assert_valid_coordinates
+    description: "Checks latitude is within -90 to 90 and longititude is within -180 to 180."

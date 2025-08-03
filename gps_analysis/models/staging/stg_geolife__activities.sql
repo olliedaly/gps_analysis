@@ -19,8 +19,10 @@ renamed as (
     from source
     -- Filter out rows with invalid latitude values (just 1)
     where latitude between -90 and 90
-    -- no cases, but future proofing
+    -- no cases, but future proofing, warning set in tests to identify if occurs
     and longitude between -180 and 180
+    -- 1 activity from year 2000, dataset details say 'from April 2007'. Removing
+    and extract(year from timestamp) > 2006
 
 )
 

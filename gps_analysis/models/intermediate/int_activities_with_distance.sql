@@ -24,6 +24,8 @@ select
     st_distance(
         st_geogpoint(longitude_deg, latitude_deg),
         st_geogpoint(prev_longitude_deg, prev_latitude_deg)
-    ) / 1000 as distance_from_prev_point_km
+    ) / 1000 as distance_from_prev_point_km,
+    latitude_deg,
+    longitude_deg
 
 from activity_points_with_previous

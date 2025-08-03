@@ -39,3 +39,9 @@ models:
         tests:
           - unique
           - not_null
+
+  - name: fct_user_retention
+    description: "A fact table used to calculate how consecutive months a user has been active"
+
+  - name: retention_cohorts_pivoted
+    description: "A table to present user retention in Looker"
